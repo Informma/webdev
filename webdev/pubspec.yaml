@@ -17,7 +17,10 @@ dependencies:
   crypto: ^2.0.6
   dwds: ^5.0.0
   http: ^0.12.0
-  http_multi_server: ^2.1.0
+  http_multi_server:
+    git:
+      url: git@github.com:Informma/http_multi_server.git
+      ref: fix-bind-secure
   io: ^0.3.2+1
   logging: ^0.11.0
   pedantic: ^1.5.0
@@ -42,6 +45,12 @@ dev_dependencies:
   test_descriptor: ^1.0.3
   test_process: ^1.0.1
   webdriver: ^2.0.0
+
+dependency_overrides:
+  http_multi_server:
+    git:
+      url: git@github.com:Informma/http_multi_server.git
+      ref: fix-bind-secure
 
 executables:
   webdev:
