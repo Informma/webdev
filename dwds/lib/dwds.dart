@@ -131,6 +131,9 @@ class Dwds {
       logWriter(Level.INFO, 'Serving DevTools at $uri\n');
     }
 
+    if(proxyUrl != null){
+      logWriter(Level.INFO, 'Expecting reverse proxy at $proxyUrl');
+    }
     var injected = DwdsInjector(
       loadStrategy,
       extensionUri: extensionUri,

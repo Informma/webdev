@@ -336,6 +336,8 @@ class Configuration {
         ? argResults[proxyUrlFlag] as String
         : null;
 
+    logWriter(Level.INFO, 'proxy-url is $proxyUrl\n');
+
     return Configuration(
         autoRun: defaultConfiguration.autoRun,
         chromeDebugPort: chromeDebugPort,
