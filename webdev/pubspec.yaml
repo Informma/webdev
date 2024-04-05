@@ -15,7 +15,12 @@ dependencies:
   build_daemon: ^2.0.0
   browser_launcher: ^0.1.5
   crypto: ^2.0.6
-  dwds: ^5.0.0
+#  dwds: ^5.0.0
+  dwds:
+    git:
+      url: git@github.com:Informma/webdev.git
+      ref: fix-hostname
+      path: dwds
   http: ^0.12.0
   http_multi_server:
     git:
