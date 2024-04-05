@@ -46,6 +46,8 @@ refresh: Performs a full page refresh.
             ' debugger listening on this port.')
     ..addOption(hostnameFlag,
         help: 'Specify the hostname to serve on.', defaultsTo: 'localhost')
+    ..addOption(proxyUrlFlag,
+        help: 'Specify the a reverse proxy url to serve on. eg https://certifi.local:8080')
     ..addFlag(hotRestartFlag,
         negatable: false,
         help: 'Automatically reloads changed modules after each build '
