@@ -28,7 +28,7 @@ const outputNone = 'NONE';
 const releaseFlag = 'release';
 const requireBuildWebCompilersFlag = 'build-web-compilers';
 const verboseFlag = 'verbose';
-const proxyUrlFlag = 'proxyUrl';
+const proxyUrlFlag = 'proxy-url';
 
 ReloadConfiguration _parseReloadConfiguration(ArgResults argResults) {
   var auto = argResults.options.contains(autoOption)
