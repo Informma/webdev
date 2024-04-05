@@ -28,6 +28,7 @@ const outputNone = 'NONE';
 const releaseFlag = 'release';
 const requireBuildWebCompilersFlag = 'build-web-compilers';
 const verboseFlag = 'verbose';
+const proxyUrlFlag = 'proxyUrl';
 
 ReloadConfiguration _parseReloadConfiguration(ArgResults argResults) {
   var auto = argResults.options.contains(autoOption)
@@ -92,6 +93,7 @@ class Configuration {
   final ReloadConfiguration _reload;
   final bool _requireBuildWebCompilers;
   final bool _verbose;
+  final String _proxyUrl;
 
   Configuration({
     bool autoRun,
@@ -112,6 +114,7 @@ class Configuration {
     bool release,
     bool requireBuildWebCompilers,
     bool verbose,
+    String proxyUrl,
   })  : _autoRun = autoRun,
         _chromeDebugPort = chromeDebugPort,
         _debugExtension = debugExtension,
@@ -127,6 +130,7 @@ class Configuration {
         _release = release,
         _reload = reload,
         _requireBuildWebCompilers = requireBuildWebCompilers,
+        _proxyUrl = proxyUrl,
         _verbose = verbose {
     _validateConfiguration();
   }
@@ -228,6 +232,8 @@ class Configuration {
 
   bool get verbose => _verbose ?? false;
 
+  String get proxyUrl => _proxyUrl;
+
   /// Returns a new configuration with values updated from the parsed args.
   static Configuration fromArgs(ArgResults argResults,
       {Configuration defaultConfiguration}) {
@@ -326,6 +332,10 @@ class Configuration {
         ? argResults[verboseFlag] as bool
         : defaultConfiguration.verbose;
 
+    var proxyUrl = argResults.options.contains(proxyUrlFlag)
+        ? argResults[proxyUrlFlag] as String
+        : null;
+
     return Configuration(
         autoRun: defaultConfiguration.autoRun,
         chromeDebugPort: chromeDebugPort,
@@ -344,7 +354,8 @@ class Configuration {
         release: release,
         reload: _parseReloadConfiguration(argResults),
         requireBuildWebCompilers: requireBuildWebCompilers,
-        verbose: verbose);
+        verbose: verbose,
+        proxyUrl: proxyUrl);
   }
 }
 

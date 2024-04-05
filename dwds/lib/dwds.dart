@@ -90,6 +90,7 @@ class Dwds {
     bool verbose,
     UrlEncoder urlEncoder,
     bool useFileProvider = false,
+    String proxyUrl,
     // TODO(annagrin): make expressionCompiler argument required
     // [issue 881](https://github.com/dart-lang/webdev/issues/881)
     ExpressionCompiler expressionCompiler,
@@ -133,6 +134,7 @@ class Dwds {
     var injected = DwdsInjector(
       loadStrategy,
       extensionUri: extensionUri,
+      proxyUrl: proxyUrl,
     );
 
     var devHandler = DevHandler(

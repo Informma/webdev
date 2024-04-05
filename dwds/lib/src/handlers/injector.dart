@@ -31,12 +31,14 @@ const _clientScript = 'dwds/src/injected/client';
 class DwdsInjector {
   final LoadStrategy _loadStrategy;
   final String _extensionUri;
+  final String _proxyUrl;
   final _devHandlerPaths = StreamController<String>();
 
   DwdsInjector(
     this._loadStrategy, {
     String extensionUri,
-  }) : _extensionUri = extensionUri;
+    String proxyUrl,
+  }) : _extensionUri = extensionUri, _proxyUrl = proxyUrl;
 
   /// Returns the embedded dev handler paths.
   ///
@@ -74,6 +76,9 @@ class DwdsInjector {
                   .encode(md5.convert(utf8.encode('$requestedUri')).bytes);
               var requestedUriBase = '${request.requestedUri.scheme}'
                   '://${request.requestedUri.authority}';
+              if(_proxyUrl != null){
+                requestedUriBase = _proxyUrl;
+              }
               var devHandlerPath = '\$dwdsSseHandler';
               var subPath = request.url.pathSegments.toList()..removeLast();
               if (subPath.isNotEmpty) {
